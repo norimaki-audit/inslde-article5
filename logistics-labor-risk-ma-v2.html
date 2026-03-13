@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="description" content="物流業界の労務リスク（2024年問題〜2030年問題）を、M&A・財務デューデリジェンスの観点から整理。未払残業代・労働時間管理・潜在債務が企業価値や取引条件に与える影響を、公認会計士の視点で解説します。" />
+  <title>物流業界の労務リスクとM&A｜2024年問題から2030年問題へ</title>
+
+  <!--
+  =========================================
+  【必ず置換】お問い合わせURL
+  下の __CONTACT_URL__ を、公開後の問い合わせフォームURLに置き換えてください。
+  例）https://example.com/contact
+  =========================================
+  -->
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      /* Brand */
+      --navy:#2A2954;
+      --navy2:#32315E;
+      --link:#1f3a8a;
+
+      /* Page (readability-first) */
+      --page:#f6f7fb;
+      --paper:#ffffff;
+      --line:#e6e8ef;
+      --line2:#d6dae6;
+
+      --text:#111111;
+      --text2:#1f2937;
+      --muted:#6b7280;
+
+      --good:#16a34a;
+      --warn:#b45309;
+      --bad:#b91c1c;
+
+      --radius: 18px;
+      --radius2: 22px;
+      --shadow: 0 10px 28px rgba(17,24,39,.08);
+      --shadow2: 0 6px 18px rgba(17,24,39,.06);
+
+      --max: 1120px;
+      --prose: 72ch;
+
+      --p: 16.5px;
+      --lh: 1.78;
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: "Noto Sans JP", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      color: var(--text);
+      background: var(--page);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    a{ color: var(--link); text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+    img{ max-width:100%; height:auto; }
+    code{ font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: .95em; }
+
+    .wrap{ width:min(var(--max), calc(100% - 40px)); margin:0 auto; }
+    @media (max-width: 520px){ .wrap{ width: calc(100% - 28px); } }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr 340px;
+      gap: 22px;
+      align-items:start;
+      padding-bottom: 70px;
+    }
+    @media (max-width: 980px){ .grid{ grid-template-columns: 1fr; } }
+
+    .skip{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+    .skip:focus{
+      position:fixed; left:14px; top:14px; width:auto; height:auto;
+      padding:10px 12px;
+      background: rgba(17,24,39,.92);
+      color:#fff;
+      border-radius: 12px;
+      z-index: 9999;
+    }
+
+    /* HERO (dark allowed, full-bleed) */
+    .hero{
+      color: rgba(255,255,255,.92);
+      background:
+        linear-gradient(180deg, rgba(6,16,24,.90), rgba(6,16,24,.72) 45%, rgba(6,16,24,.92)),
+        url("https://static.wixstatic.com/media/ef45fa_85d537fb06cf432284f104a9cae89da8~mv2.png") center/cover no-repeat;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      padding: clamp(18px, 3vw, 40px) 0 18px;
+
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+      margin-right: calc(50% - 50vw);
+      border-radius: 0;
+
+      /* iPhone safe-area */
+      padding-left: env(safe-area-inset-left);
+      padding-right: env(safe-area-inset-right);
+    }
+
+    .topbar{ display:flex; align-items:center; justify-content:space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; }
+
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+      background: rgba(0,0,0,.18);
+      backdrop-filter: blur(6px);
+    }
+    .brand img{ height:22px; width:auto; display:block; }
+    .brand small{ color: rgba(255,255,255,.72); font-weight: 500; }
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.10);
+      border: 1px solid rgba(255,255,255,.16);
+      color: rgba(255,255,255,.88);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    h1{
+      font-family: "Noto Serif JP", serif;
+      line-height: 1.35;
+      letter-spacing: .01em;
+      margin: 8px 0 10px;
+      font-size: clamp(24px, 3.5vw, 40px);
+      text-shadow: 0 10px 24px rgba(0,0,0,.25);
+    }
+
+    .lede{
+      max-width: 92ch;
+      margin: 10px 0 12px;
+      color: rgba(255,255,255,.86);
+      font-size: clamp(14.5px, 1.55vw, 16px);
+      line-height: 1.85;
+    }
+
+    .meta{ display:flex; flex-wrap:wrap; gap:10px; color: rgba(255,255,255,.72); font-size: 13.5px; align-items:center; }
+    .meta .dot{ width:4px; height:4px; border-radius:999px; background: rgba(255,255,255,.35); display:inline-block; }
+
+    /* Cards */
+    .card{
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius2);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+    }
+    .inner{ padding: 20px; }
+    @media (max-width: 520px){ .inner{ padding: 16px; } }
+
+    /* TOC */
+    .toc h2{ margin:0 0 10px; font-size: 13.5px; letter-spacing: .08em; color:#111827; }
+    .toc ol{ margin:0; padding-left:18px; color: var(--text2); }
+    .toc li{ margin: 6px 0; }
+    .toc a{ color:#111827; }
+
+    .tocMobile{ display:none; }
+    @media (max-width: 980px){
+      .tocDesktop{ display:none; }
+      .tocMobile{ display:block; margin-top: 14px; }
+      .toc details{ border-radius:16px; border:1px solid var(--line); background:#fff; padding:12px 14px; box-shadow: var(--shadow2); }
+      .toc summary{ cursor:pointer; list-style:none; font-weight:700; letter-spacing:.02em; color:#111827; }
+      .toc summary::-webkit-details-marker{ display:none; }
+      .toc details[open]{ padding-bottom: 14px; }
+      .toc details ol{ margin-top: 10px; }
+    }
+
+    /* Article */
+    .article{ box-shadow: var(--shadow); }
+    .prose{ max-width: var(--prose); margin: 0 auto; }
+
+    /* Section divider: h2 + right line */
+    .article h2{
+      margin: 28px 0 10px;
+      font-size: clamp(19px, 2.1vw, 22px);
+      line-height: 1.45;
+      letter-spacing: .02em;
+      color: #0f172a;
+      display:flex;
+      align-items:center;
+      gap: 14px;
+    }
+    .article h2:first-child{ margin-top: 0; }
+    .article h2::after{
+      content:"";
+      flex:1;
+      height:2px;
+      background: linear-gradient(90deg, rgba(42,41,84,.55), rgba(42,41,84,.10));
+      border-radius: 999px;
+      transform: translateY(1px);
+    }
+    .article h2:not(:first-of-type){ padding-top: 18px; border-top: 1px solid var(--line); }
+
+    .article h3{
+      margin: 18px 0 8px;
+      font-size: clamp(16px, 1.9vw, 18px);
+      line-height: 1.55;
+      color: #111827;
+      position: relative;
+      padding-left: 10px;
+    }
+    .article h3::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top:.55em;
+      width:4px;
+      height:1.1em;
+      border-radius: 999px;
+      background: rgba(42,41,84,.55);
+    }
+
+    .article p{ font-size: var(--p); line-height: var(--lh); margin: 10px 0; color: var(--text); }
+    .article ul, .article ol{ margin: 10px 0; padding-left: 1.2em; }
+    .article li{ margin: 6px 0; line-height: 1.75; }
+
+    .note{
+      border: 1px solid var(--line);
+      border-left: 6px solid rgba(42,41,84,.55);
+      background: #fbfbfd;
+      border-radius: 16px;
+      padding: 14px 14px 14px 12px;
+      margin: 14px 0;
+    }
+    .note strong{ color:#111827; }
+    .note .mini{ color: var(--muted); font-size: 13.5px; line-height:1.65; margin-top: 6px; }
+
+    .warnBox{
+      border: 1px solid rgba(185, 28, 28, .18);
+      border-left: 6px solid rgba(185, 28, 28, .55);
+      background: #fff7f7;
+      border-radius: 16px;
+      padding: 14px 14px 14px 12px;
+      margin: 14px 0;
+    }
+    .warnBox strong{ color:#7f1d1d; }
+    .warnBox .mini{ color: #7f1d1d; opacity: .75; font-size: 13.5px; line-height:1.65; margin-top: 6px; }
+
+    .callout{
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      padding: 14px;
+      margin: 12px 0;
+      box-shadow: var(--shadow2);
+    }
+
+    .cols2{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 12px 0;
+    }
+    @media (max-width: 720px){ .cols2{ grid-template-columns: 1fr; } }
+
+    .pane{
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      padding: 14px;
+    }
+    .pane h4{
+      margin: 0 0 8px;
+      font-size: 14.5px;
+      letter-spacing: .02em;
+      color:#111827;
+      display:flex; align-items:center; gap:8px;
+    }
+    .badge{
+      display:inline-flex; align-items:center;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 12.5px;
+      border: 1px solid var(--line);
+      color: var(--navy);
+      background: rgba(42,41,84,.08);
+    }
+
+    .tableWrap{
+      overflow:auto;
+      border-radius: 18px;
+      border:1px solid var(--line);
+      background:#fff;
+      box-shadow: var(--shadow2);
+      margin: 12px 0 6px;
+    }
+    table{
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 880px;
+    }
+    th, td{
+      padding: 12px 12px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+      font-size: 14.5px;
+      line-height: 1.65;
+    }
+    th{
+      background: #f3f5fb;
+      color: #111827;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      white-space: nowrap;
+    }
+    tr:last-child td{ border-bottom: none; }
+    .foot{ color: var(--muted); font-size: 13px; line-height: 1.65; margin-top: 6px; }
+
+    .figure{
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: #fff;
+      padding: 14px;
+      margin: 12px 0;
+      box-shadow: var(--shadow2);
+    }
+    .figureTitle{
+      margin: 0 0 10px;
+      font-size: 14px;
+      letter-spacing: .06em;
+      color: #111827;
+      text-transform: none;
+    }
+
+    /* Buttons */
+    .btns{ display:flex; gap:10px; flex-wrap: wrap; margin-top: 10px; }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #111827;
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+    .btnPrimary{
+      background: var(--navy);
+      color: #fff;
+      border-color: rgba(42,41,84,.35);
+      box-shadow: 0 12px 24px rgba(42,41,84,.18);
+    }
+    .btn small{ font-weight: 600; opacity: .85; }
+    .btn:hover{ text-decoration:none; transform: translateY(-1px); }
+
+    /* Sidebar */
+    .side .inner{ padding: 18px; }
+    .side h3{ margin: 0 0 8px; padding-left: 10px; }
+    .side h3::before{ top:.55em; }
+    .side p, .side li{ color: var(--text2); }
+    .side ul{ margin: 8px 0 0; }
+
+    /* CTA block inside article */
+    .cta{
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: linear-gradient(180deg, #ffffff, #fbfbff);
+      padding: 16px;
+      margin: 18px 0 6px;
+      box-shadow: var(--shadow2);
+    }
+    .cta h3{ margin-top: 0; }
+
+    /* Footer */
+    footer{
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      padding: 22px 0 60px;
+    }
+    footer a{ color: var(--muted); text-decoration: underline; text-decoration-style: dotted; }
+    .hr{ height:1px; background: var(--line); margin: 14px 0; }
+
+    /* Small utility */
+    .kicker{
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: none;
+      color: var(--muted);
+      margin: 0 0 8px;
+    }
+    .muted{ color: var(--muted); }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#content">本文へスキップ</a>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="topbar" aria-label="サイト上部">
+        <div class="brand" aria-label="ブランド">
+          <img src="https://static.wixstatic.com/media/ef45fa_ee036c6be23b48ed9bc7dc22a2f90da9~mv2.png" alt="FinTrust ロゴ" loading="eager" />
+          <small>FinTrust / M&amp;A・会計・財務</small>
+        </div>
+        <div class="pill" aria-label="記事カテゴリ">
+          <span aria-hidden="true">■</span>
+          <span>コラム｜物流 × 労務リスク × M&amp;A</span>
+        </div>
+      </div>
+
+      <h1 id="top">物流業界の労務リスクとM&amp;A<br/>― 2024年問題から2030年問題へ ―</h1>
+      <p class="lede">
+        規制施行後、現場への影響が可視化されつつある一方で、M&amp;Aの現場では労務リスクの議論がむしろ深まっています。
+        本稿では、財務デューデリジェンスで見落としやすい論点を「企業価値・取引条件」までつなげて整理します。
+      </p>
+      <div class="meta" aria-label="記事メタ情報">
+        <span>監修：公認会計士（想定）</span><span class="dot" aria-hidden="true"></span>
+        <span>対象：買い手／売り手／金融機関／仲介担当者</span><span class="dot" aria-hidden="true"></span>
+        <span>読了目安：5〜7分</span>
+      </div>
+
+      <nav class="toc tocMobile" aria-label="目次（モバイル）">
+        <details open>
+          <summary>目次をひらく</summary>
+          <ol>
+            <li><a href="#intro">はじめに</a></li>
+            <li><a href="#case">現場で起きること（一般化した事例）</a></li>
+            <li><a href="#dd">財務DDで労務リスクが論点になる理由</a></li>
+            <li><a href="#impact">企業価値・条件へどう影響するか</a></li>
+            <li><a href="#2030">2030年問題への接続</a></li>
+            <li><a href="#actions">実務での進め方（最小セット）</a></li>
+            <li><a href="#summary">まとめ</a></li>
+            <li><a href="#cta">ご相談（CTA）</a></li>
+          </ol>
+        </details>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="content" role="main">
+    <div class="grid" aria-label="記事本体とサイドバー">
+
+      <!-- Main -->
+      <article class="card article" aria-label="記事本文">
+        <div class="inner">
+          <div class="prose">
+
+            <p class="kicker">POINT</p>
+            <div class="note">
+              <strong>財務DDは「数字の整合」だけでなく、数字の裏側にある“実態（運用）”を読む局面があります。</strong>
+              <div class="mini">物流業界では、労働時間管理・未払残業代・運行の実態が、潜在債務や条件調整の論点になりやすい領域です。</div>
+            </div>
+
+            <h2 id="intro">はじめに</h2>
+            <p>
+              トラックドライバーへの時間外労働上限規制（年間960時間）が適用された2024年4月から約2年。
+              現場への影響が可視化されつつある今、M&amp;Aの現場でも労務リスクの議論はむしろ深まっています。
+            </p>
+            <p>
+              M&amp;Aの財務デューデリジェンスでは、財務数値だけでなく、労務に関する潜在的なリスクが論点になることがあります。
+              特に物流業界では、ドライバーの労働時間管理や未払残業代が重要なテーマであり続けています。
+            </p>
+
+            <div class="figure" role="group" aria-label="写真：物流現場（イメージ）">
+              <p class="figureTitle">写真｜物流現場（イメージ）</p>
+              <img
+                src="https://www.genspark.ai/api/files/s/MUBh46DU?cache_control=3600"
+                alt="走行中の箱型トラック（イメージ）"
+                loading="lazy"
+                decoding="async"
+                referrerpolicy="no-referrer"
+                style="width:100%; height:auto; border-radius:14px; border:1px solid var(--line);"
+              />
+              <div class="foot">画像：生成（オリジナル）</div>
+            </div>
+
+            <div class="figure" role="group" aria-label="図：2024年問題から2030年問題への見取り図">
+              <p class="figureTitle">図｜2024年問題 → 2030年問題（論点の“重なり”）</p>
+              <svg viewBox="0 0 900 240" width="100%" height="auto" role="img" aria-label="規制対応と人手不足が重なる様子を示す図">
+                <defs>
+                  <linearGradient id="gA" x1="0" x2="1">
+                    <stop offset="0" stop-color="#2A2954" stop-opacity=".16"/>
+                    <stop offset="1" stop-color="#2A2954" stop-opacity=".04"/>
+                  </linearGradient>
+                </defs>
+                <rect x="0" y="0" width="900" height="240" rx="18" fill="url(#gA)"/>
+
+                <g font-family="Noto Sans JP, sans-serif" fill="#111827">
+                  <text x="40" y="56" font-size="15" font-weight="700">M&amp;Aで見たいのは「規制対応」だけでなく「運用の実態」</text>
+                  <text x="40" y="82" font-size="12" fill="#6b7280">労務リスクは、現場の運用・取引構造・人材確保と絡んで条件に影響します</text>
+
+                  <g>
+                    <rect x="40" y="110" width="380" height="88" rx="18" fill="#fff" stroke="#e6e8ef"/>
+                    <text x="60" y="142" font-size="14" font-weight="700">2024年問題</text>
+                    <text x="60" y="164" font-size="12" fill="#6b7280">上限規制／時間管理／未払残業リスク</text>
+                    <text x="60" y="186" font-size="12" fill="#6b7280">→ 監査・是正・賃金設計の論点</text>
+                  </g>
+
+                  <g>
+                    <rect x="480" y="110" width="380" height="88" rx="18" fill="#fff" stroke="#e6e8ef"/>
+                    <text x="500" y="142" font-size="14" font-weight="700">2030年問題</text>
+                    <text x="500" y="164" font-size="12" fill="#6b7280">担い手不足／稼働率／受託維持</text>
+                    <text x="500" y="186" font-size="12" fill="#6b7280">→ 収益力・継続性の論点</text>
+                  </g>
+
+                  <g>
+                    <rect x="275" y="150" width="350" height="64" rx="999" fill="#2A2954" opacity=".10" stroke="#2A2954" stroke-opacity=".25"/>
+                    <text x="450" y="182" text-anchor="middle" font-size="13" font-weight="700">重なる部分：現場運用が「条件」に反映される</text>
+                  </g>
+                </g>
+              </svg>
+              <div class="foot">※図は概念図です。規制対応の“書類”と、運用の“実態”が一致しているかが重要になります。</div>
+            </div>
+
+            <h2 id="case">現場で起きること（一般化した事例）</h2>
+            <p>
+              ある物流会社の調査において、従業員から未払残業代の請求が提起されているケースがありました。
+              会社では日報による勤務管理を行っていたものの、残業時間の厳密な把握までは十分に行われていない状況でした。
+            </p>
+            <p>
+              長時間、道路の上で過ごすドライバーだからこそ、長距離運転の途中、立ち寄った先で自らの権利を知る機会が生まれることがあります。
+              請求に至った背景を聞いたとき、そのことを改めて感じました。
+            </p>
+            <p>
+              個別の請求への対応以上に重要だったのは、その先にある問題です。
+              調査の中で、他のドライバーにも同様の労働実態が存在する可能性が浮かび上がり、M&amp;Aにおける重要な留意事項として整理されました。
+              請求のきっかけは、会社の想定外のところにありました。
+              労務リスクとは、管理部門の外側で静かに育つものかもしれません。
+            </p>
+
+            <div class="warnBox" aria-label="注意：労務リスクの特徴">
+              <strong>労務リスクの特徴：</strong>
+              <ul>
+                <li>「一人の請求」が、全社的な潜在論点の入口になることがある</li>
+                <li>資料は整っていても、運用が追いついていないケースがある</li>
+                <li>発火点が社内ではなく、社外（立ち寄り先・同業・SNS等）にあることも</li>
+              </ul>
+              <div class="mini">※個別案件の一般化です。特定企業・案件を示すものではありません。</div>
+            </div>
+
+            <h2 id="dd">財務DDで労務リスクが論点になる理由</h2>
+            <p>
+              規制施行後も、物流業界では長時間労働が構造的に発生しやすい環境に変わりはありません。
+              財務デューデリジェンスにおいて、こうした潜在的な労務リスクが企業価値や取引条件に影響するケースは、今後ますます増えていくでしょう。
+            </p>
+            <p>
+              重要なのは、<strong>「財務数値の裏側にある実態を読む」</strong>姿勢です。
+              たとえば、給与・外注費・運行コストの推移は整合していても、労働時間の実態と一致しているとは限りません。
+            </p>
+
+            <div class="figure" role="group" aria-label="表：財務DDで確認しやすい労務リスク（例）">
+              <p class="figureTitle">表｜物流M&amp;Aで“先に見ておくと速い”労務リスク（例）</p>
+              <div class="tableWrap" role="region" aria-label="労務リスク確認表（横スクロール可）" tabindex="0">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>論点</th>
+                      <th>見たいもの（例）</th>
+                      <th>赤信号のサイン</th>
+                      <th>取引への影響例</th>
+                      <th>一次対応（最小）</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>労働時間の実態</strong></td>
+                      <td>日報／運行記録／勤怠の突合、長距離の拘束時間の扱い</td>
+                      <td>日報はあるが集計・検証ができていない</td>
+                      <td>潜在未払の認識、価格調整・補償条項の論点</td>
+                      <td>対象期間・対象者のサンプル突合</td>
+                    </tr>
+                    <tr>
+                      <td><strong>未払残業代</strong></td>
+                      <td>固定残業・手当の設計、割増計算、36協定の運用</td>
+                      <td>「みなし」で運用が止まっている／根拠が薄い</td>
+                      <td>補償上限・エスクロー、引渡条件の厳格化</td>
+                      <td>賃金台帳と勤怠の整合チェック</td>
+                    </tr>
+                    <tr>
+                      <td><strong>外注化・請負</strong></td>
+                      <td>実質的な指揮命令の有無、委託契約の整合</td>
+                      <td>形式は外注でも実態は雇用に近い</td>
+                      <td>労務・社保の遡及リスク、スキームの見直し</td>
+                      <td>主要委託先の契約・運用確認</td>
+                    </tr>
+                    <tr>
+                      <td><strong>人員不足・稼働率</strong></td>
+                      <td>退職率、採用難、便数維持の実態</td>
+                      <td>受託維持のために無理な運行が常態化</td>
+                      <td>収益計画の下振れ、のれん/DCF前提の再検討</td>
+                      <td>直近の便数・稼働率の推移把握</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="foot">※表は一般化した例です。実際の論点は業態（路線／長距離／3PL等）により変動します。</div>
+            </div>
+
+            <h2 id="impact">企業価値・条件へどう影響するか</h2>
+            <p>
+              労務リスクは「コストが増える」だけでなく、取引条件（表明保証・補償・価格調整）や、収益力の見立てそのものに影響します。
+              とくに、個別請求の有無よりも、<strong>同様の実態が“面”で存在するか</strong>が重要論点になります。
+            </p>
+
+            <div class="cols2" aria-label="企業価値への影響（整理）">
+              <div class="pane">
+                <h4><span class="badge">短期</span>潜在債務・一時費用</h4>
+                <ul>
+                  <li>未払残業代・遡及対応</li>
+                  <li>是正のための賃金設計見直し</li>
+                  <li>社労士・弁護士対応コスト</li>
+                </ul>
+              </div>
+              <div class="pane">
+                <h4><span class="badge">中長期</span>収益力・継続性</h4>
+                <ul>
+                  <li>稼働率低下（人員不足）</li>
+                  <li>受託維持の難化（顧客要求とのギャップ）</li>
+                  <li>採用・定着のための待遇改善</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="figure" role="group" aria-label="図：氷山モデル（見えるリスクと見えにくいリスク）">
+              <p class="figureTitle">図｜労務リスクは“氷山”になりやすい（概念図）</p>
+              <svg viewBox="0 0 900 280" width="100%" height="auto" role="img" aria-label="見える請求の下に運用・構造があることを示す図">
+                <defs>
+                  <linearGradient id="ice" x1="0" x2="0" y1="0" y2="1">
+                    <stop offset="0" stop-color="#2A2954" stop-opacity=".10"/>
+                    <stop offset="1" stop-color="#2A2954" stop-opacity=".02"/>
+                  </linearGradient>
+                </defs>
+                <rect x="0" y="0" width="900" height="280" rx="18" fill="url(#ice)"/>
+                <g font-family="Noto Sans JP, sans-serif" fill="#111827">
+                  <text x="40" y="54" font-size="14" font-weight="700">上（見える）：個別請求・指摘</text>
+                  <text x="40" y="78" font-size="12" fill="#6b7280">しかし、M&amp;Aで効くのは下（見えにくい）の“面”の部分</text>
+
+                  <path d="M160 110 L380 110 L310 170 L230 170 Z" fill="#fff" stroke="#e6e8ef"/>
+                  <text x="270" y="146" text-anchor="middle" font-size="12" fill="#7f1d1d">未払残業代の請求</text>
+
+                  <path d="M120 170 L420 170 L330 250 L210 250 Z" fill="#fff" stroke="#e6e8ef"/>
+                  <text x="270" y="205" text-anchor="middle" font-size="12" fill="#6b7280">勤怠運用のズレ</text>
+                  <text x="270" y="225" text-anchor="middle" font-size="12" fill="#6b7280">日報と集計の不整合</text>
+
+                  <path d="M520 120 C 680 80, 820 120, 820 120 L820 250 C 820 250, 680 270, 520 250 Z" fill="#fff" stroke="#e6e8ef"/>
+                  <text x="670" y="160" text-anchor="middle" font-size="12" fill="#6b7280">構造的要因</text>
+                  <text x="670" y="182" text-anchor="middle" font-size="12" fill="#6b7280">商流・納期要求・人手不足</text>
+                  <text x="670" y="204" text-anchor="middle" font-size="12" fill="#6b7280">→ 無理な運行が常態化</text>
+
+                  <text x="520" y="54" font-size="14" font-weight="700">下（見えにくい）：全社的な実態</text>
+                </g>
+              </svg>
+              <div class="foot">※氷山モデルは概念図です。「一件の請求」より「全体の実態（運用・構造）」が条件に反映されます。</div>
+            </div>
+
+            <h2 id="2030">2030年問題への接続</h2>
+            <p>
+              さらに2030年に向けては、ドライバーの担い手不足という次の問題も迫っています。
+              規制対応を進めるほど、短期的には人員・コスト面の負荷が顕在化しやすく、
+              中長期では「稼働率」と「採用・定着」が収益力の前提そのものになります。
+            </p>
+            <p>
+              したがって、M&amp;Aにおける労務リスクは、潜在債務の論点にとどまらず、
+              <strong>企業の継続性・再現性のある利益</strong>をどう見立てるかの問題として現れます。
+            </p>
+
+            <h2 id="actions">実務での進め方（最小セット）</h2>
+            <p>
+              労務リスクは「ゼロにする」よりも、まず<strong>把握して、説明できる状態</strong>にすることが現実的です。
+              M&amp;Aの初期〜DD局面で、最低限押さえたい進め方をまとめます。
+            </p>
+            <div class="callout" aria-label="実務の最小セット">
+              <ol>
+                <li><strong>対象範囲を決める</strong>（拠点・職種・対象期間、サンプルでも可）</li>
+                <li><strong>勤怠・日報・運行記録を突合</strong>（ズレの種類を分類する）</li>
+                <li><strong>賃金設計と計算ロジックを確認</strong>（固定残業・手当の位置付け）</li>
+                <li><strong>論点を「金額」と「運用改善」に分けて整理</strong>（潜在債務／再発防止）</li>
+                <li><strong>取引条件へ落とし込む</strong>（補償・エスクロー・クロージング条件など）</li>
+              </ol>
+              <p class="muted" style="margin:8px 0 0;">※案件規模・スキーム（株式/事業譲渡）により最適解は変わります。</p>
+            </div>
+
+            <h2 id="summary">まとめ</h2>
+            <p>
+              規制施行後も、物流業界では長時間労働が構造的に発生しやすい環境に変わりはありません。
+              さらに2030年に向けては、人手不足という次の問題も迫っています。
+            </p>
+            <p>
+              財務デューデリジェンスにおいて、こうした潜在的な労務リスクが企業価値や取引条件に影響するケースは今後増えていくでしょう。
+              「財務数値の裏側にある実態を読む」姿勢が、M&amp;Aの成否を左右することがあります。
+            </p>
+
+            <div class="cta" id="cta" aria-label="記事末尾のCTA">
+              <h3>物流M&amp;A（財務DD／労務リスク整理）のご相談</h3>
+              <p class="muted" style="margin-top:6px;">
+                当社では、物流・運送業を含む中堅・中小企業のM&amp;Aにおいて、財務DDを起点に
+                「労務リスクの論点整理」「企業価値・条件への落とし込み」まで、目的と状況に応じて実務的に支援します。
+              </p>
+              <div class="btns">
+                <a class="btn btnPrimary" href="__CONTACT_URL__">お問い合わせ（ご相談）</a>
+                <a class="btn" href="#dd">DDの論点を見る <small>（表へ）</small></a>
+              </div>
+              <div class="foot">※公開時に <code>__CONTACT_URL__</code> を実URLへ置換してください。</div>
+            </div>
+
+            <div class="hr"></div>
+            <p class="muted" style="font-size:13.5px;">
+              ※本稿は複数の案件経験を基に一般化したものであり、特定の企業・案件を示すものではありません。<br/>
+              免責：本ページは一般的な情報提供を目的としたもので、個別案件への助言を構成するものではありません。
+              実際の取引判断は、案件の状況に応じて専門家へご相談ください。
+            </p>
+
+            <p style="margin-top: 12px;">
+              <a href="#top">ページ上部へ戻る</a>
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="card side" aria-label="サイドバー">
+        <div class="inner">
+          <div class="btns" style="margin-top:12px;">
+            <a class="btn btnPrimary" href="__CONTACT_URL__">相談する</a>
+            <a class="btn" href="#actions">進め方を見る</a>
+          </div>
+          <div class="foot">※ここも <code>__CONTACT_URL__</code> を置換</div>
+
+          <div class="hr"></div>
+
+          <nav class="toc tocDesktop" aria-label="目次（デスクトップ）">
+            <h2 style="display:block; margin:0 0 10px; padding:0; border:0;">目次</h2>
+            <ol>
+              <li><a href="#intro">はじめに</a></li>
+              <li><a href="#case">現場で起きること</a></li>
+              <li><a href="#dd">財務DDで論点になる理由</a></li>
+              <li><a href="#impact">企業価値・条件への影響</a></li>
+              <li><a href="#2030">2030年問題への接続</a></li>
+              <li><a href="#actions">進め方（最小）</a></li>
+              <li><a href="#summary">まとめ</a></li>
+              <li><a href="#cta">ご相談（CTA）</a></li>
+            </ol>
+          </nav>
+
+          <div class="hr"></div>
+
+          <h3 id="check"><a href="#check">初回相談前（最小）</a></h3>
+          <p class="muted" style="margin-top:6px;">可能な範囲で、次があるとスムーズです。</p>
+          <ul>
+            <li>直近の賃金台帳（または給与総額の月次推移）</li>
+            <li>勤怠・日報の運用ルール（手書きでも可）</li>
+            <li>主要な運行形態（長距離/地場、便数、繁忙）</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="wrap" aria-label="フッター">
+      <div class="hr"></div>
+      <div>
+        参照デザイン（雰囲気）：<a href="https://duqddu-my-site-y7spf6js-naritainside.wix-vibe-site.com/" target="_blank" rel="noreferrer">Wixサイト</a><br/>
+        ヒーロー背景画像：<a href="https://static.wixstatic.com/media/ef45fa_85d537fb06cf432284f104a9cae89da8~mv2.png" target="_blank" rel="noreferrer">wixstatic</a><br/>
+        ロゴ画像：<a href="https://static.wixstatic.com/media/ef45fa_ee036c6be23b48ed9bc7dc22a2f90da9~mv2.png" target="_blank" rel="noreferrer">wixstatic</a>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Smooth-scroll offset helper (keeps behavior consistent across Wix embed cases)
+    (function(){
+      const links = document.querySelectorAll('a[href^="#"]');
+      links.forEach(a => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href');
+          if(!id || id === '#') return;
+          const el = document.querySelector(id);
+          if(!el) return;
+          e.preventDefault();
+          const y = el.getBoundingClientRect().top + window.scrollY - 10;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+          history.pushState(null, '', id);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
